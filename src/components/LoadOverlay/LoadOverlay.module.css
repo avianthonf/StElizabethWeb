@@ -4,7 +4,7 @@
   z-index: 1000;
   overflow: hidden;
   pointer-events: none;
-  animation: revealOverlay 1.35s var(--ease-standard) 0.16s forwards;
+  animation: revealOverlay 3.5s var(--ease-standard) 0.76s forwards;
   will-change: opacity, transform;
 }
 
@@ -24,7 +24,7 @@
   text-transform: uppercase;
   transform-box: fill-box;
   transform-origin: center;
-  animation: expandMaskText 1.35s var(--ease-standard) 0.16s forwards;
+  animation: expandMaskText 3.5s var(--ease-standard) 0.76s forwards;
 }
 
 .screenReaderText {
@@ -46,7 +46,7 @@
   }
 
   100% {
-    transform: scale(19);
+    transform: scale(50);
   }
 }
 
@@ -64,7 +64,7 @@
 @media (max-width: 760px) {
   .overlay,
   .maskText {
-    animation-duration: 1.15s;
+    animation-duration: 1.55s;
   }
 
   .maskText {
