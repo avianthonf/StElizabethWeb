@@ -3,6 +3,16 @@ import { describe, expect, it } from "vitest";
 import { WalkerHomepage } from "./WalkerHomepage";
 
 describe("WalkerHomepage", () => {
+  it("renders a fixed top title bar", () => {
+    render(<WalkerHomepage />);
+
+    expect(screen.getByRole("banner", { name: "Primary site navigation" })).toBeInTheDocument();
+    expect(screen.getByRole("link", { name: "The Walker School home" })).toBeInTheDocument();
+    expect(screen.getByRole("navigation", { name: "Audience navigation" })).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: "Search" })).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: "Open menu" })).toBeInTheDocument();
+  });
+
   it("renders one vertical-driven horizontal stage with exact-screen hero copy", () => {
     render(<WalkerHomepage />);
 

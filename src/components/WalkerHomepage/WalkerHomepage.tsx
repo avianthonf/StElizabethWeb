@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { HorizontalPage, HorizontalScroll } from "@/components/HorizontalScroll";
 import styles from "./WalkerHomepage.module.css";
 
@@ -10,6 +11,33 @@ const values = [
 export function WalkerHomepage(): React.ReactNode {
   return (
     <main className={styles.page}>
+      <header className={styles.titleBar} aria-label="Primary site navigation">
+        <Link className={styles.brand} href="/" aria-label="The Walker School home">
+          <span className={styles.crest} aria-hidden="true">W</span>
+          <span>The Walker School</span>
+        </Link>
+
+        <nav className={styles.navLinks} aria-label="Audience navigation">
+          <Link href="/inquire">Inquire</Link>
+          <Link href="/visit">Visit</Link>
+          <Link href="/summer">Summer</Link>
+          <Link href="/about">Walker</Link>
+        </nav>
+
+        <button className={styles.searchButton} type="button" aria-label="Search" disabled>
+          <span aria-hidden="true" />
+        </button>
+
+        <button className={styles.menuButton} type="button" aria-label="Open menu" disabled>
+          <span>Menu</span>
+          <span className={styles.menuIcon} aria-hidden="true">
+            <span />
+            <span />
+            <span />
+          </span>
+        </button>
+      </header>
+
       <HorizontalScroll height="100vh" gap="0px" ariaLabel="Walker homepage vertical driven horizontal stage">
         <HorizontalPage screen className={`${styles.panel} ${styles.videoPanel}`} ariaLabel="Walker homepage video introduction">
           <div className={styles.videoFallback} role="presentation" aria-hidden="true" />
