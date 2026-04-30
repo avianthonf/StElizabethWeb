@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { HorizontalPage, HorizontalScroll } from "@/components/HorizontalScroll";
+import { LoadOverlay } from "@/components/LoadOverlay";
 import styles from "./WalkerHomepage.module.css";
 
 const values = [
@@ -11,6 +12,8 @@ const values = [
 export function WalkerHomepage(): React.ReactNode {
   return (
     <main className={styles.page}>
+      <LoadOverlay />
+
       <header className={styles.titleBar} aria-label="Primary site navigation">
         <Link className={styles.brand} href="/" aria-label="The Walker School home">
           <span className={styles.crest} aria-hidden="true">W</span>

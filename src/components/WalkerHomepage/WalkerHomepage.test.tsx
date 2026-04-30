@@ -3,6 +3,13 @@ import { describe, expect, it } from "vitest";
 import { WalkerHomepage } from "./WalkerHomepage";
 
 describe("WalkerHomepage", () => {
+  it("renders the masked load overlay", () => {
+    render(<WalkerHomepage />);
+
+    expect(screen.getByLabelText("Homepage load overlay")).toBeInTheDocument();
+    expect(screen.getAllByText("WE BELIEVE")).toHaveLength(2);
+  });
+
   it("renders a fixed top title bar", () => {
     render(<WalkerHomepage />);
 
