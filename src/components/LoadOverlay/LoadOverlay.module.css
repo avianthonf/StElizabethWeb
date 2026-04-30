@@ -4,7 +4,7 @@
   z-index: 1000;
   overflow: hidden;
   pointer-events: none;
-  animation: revealOverlay 3.5s var(--ease-standard) 0.76s forwards;
+  animation: revealOverlay 1s var(--ease-standard) 0.76s forwards;
   will-change: opacity, transform;
 }
 
@@ -24,7 +24,7 @@
   text-transform: uppercase;
   transform-box: fill-box;
   transform-origin: center;
-  animation: expandMaskText 3.5s var(--ease-standard) 0.76s forwards;
+  animation: expandMaskText 1s cubic-bezier(0.45, 0, 0.95, 0.55) 0.76s forwards;
 }
 
 .screenReaderText {
@@ -40,13 +40,12 @@
 }
 
 @keyframes expandMaskText {
-  0%,
-  22% {
+  from {
     transform: scale(1);
   }
 
-  100% {
-    transform: scale(50);
+  to {
+    transform: scale(70);
   }
 }
 
