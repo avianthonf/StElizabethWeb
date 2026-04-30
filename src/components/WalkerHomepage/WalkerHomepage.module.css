@@ -1,0 +1,143 @@
+.page {
+  min-height: 100vh;
+  background: var(--color-paper);
+}
+
+.panel {
+  position: relative;
+  display: grid;
+  height: 100%;
+  overflow: hidden;
+  background: var(--color-paper);
+}
+
+.videoPanel {
+  place-items: stretch;
+  color: var(--color-paper);
+  background: var(--color-ink);
+}
+
+.videoFallback {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 30% 20%, rgba(255, 255, 255, 0.24), transparent 28%),
+    linear-gradient(135deg, var(--color-maroon), var(--color-maroon-dark) 46%, #111 100%);
+}
+
+.heroVideoPlaceholder {
+  position: absolute;
+  inset: 0;
+}
+
+.heroOverlay {
+  position: relative;
+  z-index: 1;
+  align-self: end;
+  max-width: min(760px, calc(100vw - 48px));
+  padding: clamp(28px, 7vw, 84px);
+}
+
+.heroOverlay h1,
+.dynamicIntro h2 {
+  margin: 0;
+  font-size: clamp(2.8rem, 7vw, 7.5rem);
+  line-height: 0.9;
+  letter-spacing: -0.07em;
+  text-transform: uppercase;
+}
+
+.heroOverlay p,
+.dynamicIntro p {
+  max-width: 620px;
+  margin: 24px 0 0;
+  color: currentColor;
+  font-size: clamp(1rem, 1.6vw, 1.35rem);
+  line-height: 1.55;
+}
+
+.eyebrow {
+  margin: 0 0 18px;
+  color: var(--color-maroon);
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.videoPanel .eyebrow {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.dynamicPage {
+  grid-template-columns: minmax(320px, 0.72fr) minmax(560px, 1fr);
+  align-items: center;
+  gap: clamp(28px, 5vw, 72px);
+  padding: clamp(28px, 5vw, 72px);
+  background: var(--color-soft);
+}
+
+.dynamicIntro {
+  max-width: 640px;
+}
+
+.dynamicIntro p {
+  color: var(--color-muted);
+}
+
+.dynamicCards {
+  display: flex;
+  align-items: stretch;
+  gap: clamp(16px, 2vw, 28px);
+  min-width: 0;
+}
+
+.valueCard {
+  display: flex;
+  flex: 1 1 0;
+  min-width: 170px;
+  min-height: min(52vh, 420px);
+  padding: clamp(20px, 2.6vw, 34px);
+  border: 1px solid var(--color-line);
+  flex-direction: column;
+  justify-content: flex-end;
+  background: var(--color-paper);
+}
+
+.valueCard span {
+  margin-bottom: auto;
+  color: var(--color-maroon);
+  font-size: clamp(2.8rem, 5vw, 5.25rem);
+  font-weight: 900;
+  letter-spacing: -0.08em;
+}
+
+.valueCard h3 {
+  margin: 32px 0 12px;
+  font-size: clamp(1rem, 1.4vw, 1.35rem);
+  text-transform: uppercase;
+}
+
+.valueCard p {
+  margin: 0;
+  color: var(--color-muted);
+  line-height: 1.5;
+}
+
+@media (max-width: 760px) {
+  .dynamicPage {
+    width: 150vw;
+    grid-template-columns: minmax(260px, 0.8fr) minmax(520px, 1.2fr);
+    gap: 28px;
+    padding: 28px;
+  }
+
+  .dynamicCards {
+    gap: 16px;
+  }
+
+  .valueCard {
+    min-width: 150px;
+    min-height: 58vh;
+  }
+}

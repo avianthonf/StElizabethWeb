@@ -1,0 +1,130 @@
+"use client";
+
+import type { CSSProperties, ReactNode } from "react";
+import { useCallback, useEffect, useLayoutEffect, useRef, useState } from "react";
+import styles from "./HorizontalScroll.module.css";
+
+type HorizontalScrollProps = {
+  children: ReactNode;
+  height?: string;
+  gap?: string;
+  className?: string;
+  trackClassName?: string;
+  ariaLabel?: string;
+};
+
+type Measurements = {
+  travelDistance: number;
+  spacerHeight: number;
+};
+
+const DEFAULT_MEASUREMENTS: Measurements = {
+  travelDistance: 0,
+  spacerHeight: 0,
+};
+
+export function HorizontalScroll({
+  children,
+  height = "100vh",
+  gap = "0px",
+  className,
+  trackClassName,
+  ariaLabel,
+}: HorizontalScrollProps): ReactNode {
+  const stageRef = useRef<HTMLElement>(null);
+  const viewportRef = useRef<HTMLDivElement>(null);
+  const trackRef = useRef<HTMLDivElement>(null);
+  const frameRef = useRef<number | null>(null);
+  const measurementsRef = useRef(DEFAULT_MEASUREMENTS);
+  const [spacerHeight, setSpacerHeight] = useState("100vh");
+
+  const measure = useCallback(() => {
+    const viewport = viewportRef.current;
+    const track = trackRef.current;
+
+    if (!viewport || !track) {
+      return;
+    }
+
+    const viewportWidth = viewport.clientWidth;
+    const viewportHeight = viewport.clientHeight;
+    const travelDistance = Math.max(0, track.scrollWidth - viewportWidth);
+    const nextSpacerHeight = viewportHeight + travelDistance;
+
+    measurementsRef.current = {
+      travelDistance,
+      spacerHeight: nextSpacerHeight,
+    };
+
+    setSpacerHeight(`${nextSpacerHeight}px`);
+  }, []);
+
+  const updateTransform = useCallback(() => {
+    frameRef.current = null;
+
+    const stage = stageRef.current;
+    const track = trackRef.current;
+    const { travelDistance, spacerHeight: measuredSpacerHeight } = measurementsRef.current;
+
+    if (!stage || !track || travelDistance === 0 || measuredSpacerHeight === 0) {
+      return;
+    }
+
+    const rect = stage.getBoundingClientRect();
+    const scrollableDistance = Math.max(1, measuredSpacerHeight - window.innerHeight);
+    const progress = Math.min(1, Math.max(0, -rect.top / scrollableDistance));
+
+    track.style.transform = `translate3d(${-progress * travelDistance}px, 0, 0)`;
+  }, []);
+
+  useLayoutEffect(() => {
+    measure();
+    updateTransform();
+  }, [measure, updateTransform]);
+
+  useEffect(() => {
+    const handleResize = () => {
+      measure();
+      updateTransform();
+    };
+
+    const handleScroll = () => {
+      if (frameRef.current !== null) {
+        return;
+      }
+
+      frameRef.current = window.requestAnimationFrame(updateTransform);
+    };
+
+    window.addEventListener("resize", handleResize);
+    window.addEventListener("scroll", handleScroll, { passive: true });
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+      window.removeEventListener("scroll", handleScroll);
+
+      if (frameRef.current !== null) {
+        window.cancelAnimationFrame(frameRef.current);
+        frameRef.current = null;
+      }
+    };
+  }, [measure, updateTransform]);
+
+  const stageClassName = [styles.stage, className ?? ""].filter(Boolean).join(" ");
+  const trackClassNames = [styles.track, trackClassName ?? ""].filter(Boolean).join(" ");
+  const style = {
+    "--horizontal-scroll-height": height,
+    "--horizontal-scroll-gap": gap,
+    "--horizontal-scroll-spacer-height": spacerHeight,
+  } as CSSProperties;
+
+  return (
+    <section ref={stageRef} className={stageClassName} style={style} aria-label={ariaLabel}>
+      <div ref={viewportRef} className={styles.viewport}>
+        <div ref={trackRef} className={trackClassNames}>
+          {children}
+        </div>
+      </div>
+    </section>
+  );
+}

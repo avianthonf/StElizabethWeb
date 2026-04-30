@@ -1,0 +1,11 @@
+.page {
+  width: var(--horizontal-page-width, auto);
+  height: 100%;
+  flex: 0 0 auto;
+  min-width: 0;
+}
+
+.screen {
+  width: 100vw;
+  min-width: 100vw;
+}

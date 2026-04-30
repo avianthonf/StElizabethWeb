@@ -1,0 +1,38 @@
+.stage {
+  position: relative;
+  height: var(--horizontal-scroll-spacer-height, 100vh);
+}
+
+.viewport {
+  position: sticky;
+  top: 0;
+  height: var(--horizontal-scroll-height, 100vh);
+  overflow: hidden;
+}
+
+.track {
+  display: flex;
+  align-items: stretch;
+  gap: var(--horizontal-scroll-gap, 0px);
+  width: max-content;
+  height: 100%;
+  will-change: transform;
+}
+
+.track > * {
+  flex: 0 0 auto;
+  height: 100%;
+  min-width: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .viewport {
+    overflow-x: auto;
+    overflow-y: hidden;
+  }
+
+  .track {
+    transform: none !important;
+    will-change: auto;
+  }
+}
