@@ -13,12 +13,14 @@ describe("WalkerHomepage", () => {
     expect(screen.getByRole("button", { name: "Open menu" })).toBeInTheDocument();
   });
 
-  it("renders one vertical-driven horizontal stage with exact-screen hero copy", () => {
+  it("renders one vertical-driven horizontal stage with page-one reference text", () => {
     render(<WalkerHomepage />);
 
     expect(screen.getByLabelText("Walker homepage vertical driven horizontal stage")).toBeInTheDocument();
     expect(screen.getByLabelText("Walker homepage video introduction")).toBeInTheDocument();
-    expect(screen.getByRole("heading", { level: 1, name: "Start with the whole screen." })).toBeInTheDocument();
+    expect(screen.getByRole("heading", { level: 1, name: "Known" })).toBeInTheDocument();
+    expect(screen.getByText(/The Walker School inspires transformative learning/)).toBeInTheDocument();
+    expect(screen.queryByRole("heading", { level: 1, name: "Start with the whole screen." })).not.toBeInTheDocument();
   });
 
   it("uses an accessible placeholder instead of an empty unsourced video", () => {

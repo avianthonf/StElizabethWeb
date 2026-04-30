@@ -43,11 +43,10 @@ export function WalkerHomepage(): React.ReactNode {
           <div className={styles.videoFallback} role="presentation" aria-hidden="true" />
           <div className={styles.heroVideoPlaceholder} role="img" aria-label="Approved campus video will appear here." />
           <div className={styles.heroOverlay}>
-            <p className={styles.eyebrow}>The Walker School</p>
-            <h1>Start with the whole screen.</h1>
-            <p>
-              The first page is exactly one viewport wide and tall. Vertical scroll now drives the horizontal movement.
+            <p className={styles.heroStatement}>
+              The Walker School inspires transformative learning through meaningful relationships, academic excellence and unique opportunities. With an average class size of 15 students, each student is challenged, supported and most of all...
             </p>
+            <h1>Known</h1>
           </div>
         </HorizontalPage>
 
