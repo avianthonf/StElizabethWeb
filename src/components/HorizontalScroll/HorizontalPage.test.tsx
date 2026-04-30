@@ -14,15 +14,26 @@ describe("HorizontalPage", () => {
     expect(screen.getByRole("heading", { level: 2, name: "Intro" })).toBeInTheDocument();
   });
 
-  it("applies custom page width", () => {
+  it("applies responsive page widths", () => {
     render(
-      <HorizontalPage width="1200px" ariaLabel="Dynamic page">
+      <HorizontalPage
+        width="1200px"
+        tabletWidth="110vw"
+        mobileWidth="190vw"
+        smallMobileWidth="210vw"
+        landscapeWidth="130vw"
+        ariaLabel="Dynamic page"
+      >
         <h2>Dynamic</h2>
       </HorizontalPage>,
     );
 
     expect(screen.getByLabelText("Dynamic page")).toHaveStyle({
       "--horizontal-page-width": "1200px",
+      "--horizontal-page-tablet-width": "110vw",
+      "--horizontal-page-mobile-width": "190vw",
+      "--horizontal-page-small-mobile-width": "210vw",
+      "--horizontal-page-landscape-width": "130vw",
     });
   });
 });

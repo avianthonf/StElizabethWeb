@@ -51,7 +51,15 @@ export function WalkerHomepage(): React.ReactNode {
           </div>
         </HorizontalPage>
 
-        <HorizontalPage width="clamp(900px, 110vw, 1500px)" className={`${styles.panel} ${styles.dynamicPage}`} ariaLabel="Walker homepage dynamic content page">
+        <HorizontalPage
+          width="clamp(900px, 110vw, 1500px)"
+          tabletWidth="min(1120px, 124vw)"
+          mobileWidth="max(760px, 188vw)"
+          smallMobileWidth="max(720px, 205vw)"
+          landscapeWidth="max(880px, 132vw)"
+          className={`${styles.panel} ${styles.dynamicPage}`}
+          ariaLabel="Walker homepage dynamic content page"
+        >
           <div className={styles.dynamicIntro}>
             <p className={styles.eyebrow}>We Value</p>
             <h2>Pages stack to the right.</h2>
