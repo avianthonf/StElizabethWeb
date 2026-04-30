@@ -15,16 +15,16 @@ export function WalkerHomepage(): React.ReactNode {
       <LoadOverlay />
 
       <header className={styles.titleBar} aria-label="Primary site navigation">
-        <Link className={styles.brand} href="/" aria-label="The Walker School home">
-          <span className={styles.crest} aria-hidden="true">W</span>
-          <span>The Walker School</span>
+        <Link className={styles.brand} href="/" aria-label="St. Elizabeth High School home">
+          <span className={styles.crest} aria-hidden="true">S</span>
+          <span>St. Elizabeth High School</span>
         </Link>
 
         <nav className={styles.navLinks} aria-label="Audience navigation">
           <Link href="/inquire">Inquire</Link>
           <Link href="/visit">Visit</Link>
           <Link href="/summer">Summer</Link>
-          <Link href="/about">Walker</Link>
+          <Link href="/about">St. Elizabeth</Link>
         </nav>
 
         <button className={styles.searchButton} type="button" aria-label="Search" disabled>
@@ -41,13 +41,13 @@ export function WalkerHomepage(): React.ReactNode {
         </button>
       </header>
 
-      <HorizontalScroll height="100vh" gap="0px" ariaLabel="Walker homepage vertical driven horizontal stage">
-        <HorizontalPage screen className={`${styles.panel} ${styles.videoPanel}`} ariaLabel="Walker homepage video introduction">
+      <HorizontalScroll height="100vh" gap="0px" ariaLabel="St. Elizabeth homepage vertical driven horizontal stage">
+        <HorizontalPage screen className={`${styles.panel} ${styles.videoPanel}`} ariaLabel="St. Elizabeth homepage video introduction">
           <div className={styles.videoFallback} role="presentation" aria-hidden="true" />
-          <video className={styles.heroVideo} src="/videos/1-homepage-video.mp4" autoPlay muted loop playsInline preload="metadata" aria-label="Walker campus homepage video." />
+          <video className={styles.heroVideo} src="/videos/1-homepage-video.mp4" autoPlay muted loop playsInline preload="metadata" aria-label="St. Elizabeth campus homepage video." />
           <div className={styles.heroOverlay}>
             <p className={styles.heroStatement}>
-              The Walker School inspires transformative learning through meaningful relationships, academic excellence and unique opportunities. With an average class size of 15 students, each student is challenged, supported and most of all...
+              St. Elizabeth High School inspires transformative learning through meaningful relationships, academic excellence and unique opportunities. With an average class size of 15 students, each student is challenged, supported and most of all...
             </p>
             <h1>Known</h1>
           </div>
@@ -60,7 +60,7 @@ export function WalkerHomepage(): React.ReactNode {
           smallMobileWidth="max(720px, 205vw)"
           landscapeWidth="max(880px, 132vw)"
           className={`${styles.panel} ${styles.dynamicPage}`}
-          ariaLabel="Walker homepage dynamic content page"
+          ariaLabel="St. Elizabeth homepage dynamic content page"
         >
           <div className={styles.dynamicIntro}>
             <p className={styles.eyebrow}>We Value</p>

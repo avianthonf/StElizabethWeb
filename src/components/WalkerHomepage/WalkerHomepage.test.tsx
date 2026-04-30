@@ -14,7 +14,7 @@ describe("WalkerHomepage", () => {
     render(<WalkerHomepage />);
 
     expect(screen.getByRole("banner", { name: "Primary site navigation" })).toBeInTheDocument();
-    expect(screen.getByRole("link", { name: "The Walker School home" })).toBeInTheDocument();
+    expect(screen.getByRole("link", { name: "St. Elizabeth High School home" })).toBeInTheDocument();
     expect(screen.getByRole("navigation", { name: "Audience navigation" })).toBeInTheDocument();
     expect(screen.getByRole("button", { name: "Search" })).toBeInTheDocument();
     expect(screen.getByRole("button", { name: "Open menu" })).toBeInTheDocument();
@@ -23,17 +23,17 @@ describe("WalkerHomepage", () => {
   it("renders one vertical-driven horizontal stage with page-one reference text", () => {
     render(<WalkerHomepage />);
 
-    expect(screen.getByLabelText("Walker homepage vertical driven horizontal stage")).toBeInTheDocument();
-    expect(screen.getByLabelText("Walker homepage video introduction")).toBeInTheDocument();
+    expect(screen.getByLabelText("St. Elizabeth homepage vertical driven horizontal stage")).toBeInTheDocument();
+    expect(screen.getByLabelText("St. Elizabeth homepage video introduction")).toBeInTheDocument();
     expect(screen.getByRole("heading", { level: 1, name: "Known" })).toBeInTheDocument();
-    expect(screen.getByText(/The Walker School inspires transformative learning/)).toBeInTheDocument();
+    expect(screen.getByText(/St. Elizabeth High School inspires transformative learning/)).toBeInTheDocument();
     expect(screen.queryByRole("heading", { level: 1, name: "Start with the whole screen." })).not.toBeInTheDocument();
   });
 
   it("renders the homepage video source", () => {
     render(<WalkerHomepage />);
 
-    const video = screen.getByLabelText("Walker campus homepage video.");
+    const video = screen.getByLabelText("St. Elizabeth campus homepage video.");
 
     expect(video).toBeInTheDocument();
     expect(video).toHaveAttribute("src", "/videos/1-homepage-video.mp4");
@@ -42,7 +42,7 @@ describe("WalkerHomepage", () => {
   it("renders a dynamic second page with horizontally stacked child cards", () => {
     render(<WalkerHomepage />);
 
-    expect(screen.getByLabelText("Walker homepage dynamic content page")).toBeInTheDocument();
+    expect(screen.getByLabelText("St. Elizabeth homepage dynamic content page")).toBeInTheDocument();
     expect(screen.getByRole("heading", { level: 2, name: "Pages stack to the right." })).toBeInTheDocument();
     expect(screen.getByRole("heading", { level: 3, name: "Curiosity" })).toBeInTheDocument();
     expect(screen.getByRole("heading", { level: 3, name: "Dignity" })).toBeInTheDocument();
