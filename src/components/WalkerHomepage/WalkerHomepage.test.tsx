@@ -30,11 +30,13 @@ describe("WalkerHomepage", () => {
     expect(screen.queryByRole("heading", { level: 1, name: "Start with the whole screen." })).not.toBeInTheDocument();
   });
 
-  it("uses an accessible placeholder instead of an empty unsourced video", () => {
+  it("renders the homepage video source", () => {
     render(<WalkerHomepage />);
 
-    expect(screen.getByRole("img", { name: "Approved campus video will appear here." })).toBeInTheDocument();
-    expect(screen.queryByLabelText("Campus life video placeholder")).not.toBeInTheDocument();
+    const video = screen.getByLabelText("Walker campus homepage video.");
+
+    expect(video).toBeInTheDocument();
+    expect(video).toHaveAttribute("src", "/videos/1-homepage-video.mp4");
   });
 
   it("renders a dynamic second page with horizontally stacked child cards", () => {

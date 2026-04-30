@@ -44,7 +44,7 @@ export function WalkerHomepage(): React.ReactNode {
       <HorizontalScroll height="100vh" gap="0px" ariaLabel="Walker homepage vertical driven horizontal stage">
         <HorizontalPage screen className={`${styles.panel} ${styles.videoPanel}`} ariaLabel="Walker homepage video introduction">
           <div className={styles.videoFallback} role="presentation" aria-hidden="true" />
-          <div className={styles.heroVideoPlaceholder} role="img" aria-label="Approved campus video will appear here." />
+          <video className={styles.heroVideo} src="/videos/1-homepage-video.mp4" autoPlay muted loop playsInline preload="metadata" aria-label="Walker campus homepage video." />
           <div className={styles.heroOverlay}>
             <p className={styles.heroStatement}>
               The Walker School inspires transformative learning through meaningful relationships, academic excellence and unique opportunities. With an average class size of 15 students, each student is challenged, supported and most of all...

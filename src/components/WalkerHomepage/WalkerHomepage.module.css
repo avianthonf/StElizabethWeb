@@ -148,9 +148,12 @@
     linear-gradient(135deg, var(--color-maroon), var(--color-maroon-dark) 46%, #111 100%);
 }
 
-.heroVideoPlaceholder {
+.heroVideo {
   position: absolute;
   inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .heroOverlay {
